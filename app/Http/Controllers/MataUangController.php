@@ -38,7 +38,7 @@ class MataUangController extends Controller
     public function store(MataUangStoreRequest $request)
     {
         MataUang::create($request->all());
-        return redirect()->route("mata_uang.index")->with("success", strtoupper("mata_uang berhasil disimpan"));
+        return redirect()->route("mata_uang.index")->with("success", strtoupper(str_replace("_", " ", "mata_uang")) . " berhasil disimpan.");
     }
 
     /**
@@ -75,7 +75,7 @@ class MataUangController extends Controller
     public function update(Request $request, $kode)
     {
         $mata_uang = MataUang::where("kode", $kode)->update($request->except(["_token", "_method"]));
-        return redirect()->route("mata_uang.index")->with("success", strtoupper("mata_uang berhasil dirubah"));
+        return redirect()->route("mata_uang.index")->with("success", strtoupper(str_replace("_", " ", "mata_uang")) . " berhasil dirubah.");
     }
 
     /**
@@ -87,6 +87,6 @@ class MataUangController extends Controller
     public function destroy($kode)
     {
         MataUang::where("kode", $kode)->delete();
-        return redirect()->route("mata_uang.index")->with("success", strtoupper("mata_uang berhasil dihapus"));
+        return redirect()->route("mata_uang.index")->with("success", strtoupper(str_replace("_", " ", "mata_uang")) . " berhasil dihapus.");
     }
 }
