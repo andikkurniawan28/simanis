@@ -1,6 +1,7 @@
 @extends("template.admin.app_table_crud")
 
 @section("content")
+{{ Session::get("status") }}
 <a href="{{ route("mata_uang.create") }}">{{ strtoupper("tambah") }}</a>
 <table border="1">
     <tr>

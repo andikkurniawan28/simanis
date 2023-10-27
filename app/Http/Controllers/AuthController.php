@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Username;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -10,7 +11,9 @@ class AuthController extends Controller
         return view("auth.login");
     }
 
-    public function loginProcess(Request $request){
-        return $request;
+    public function logout(Request $request){
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('login');
     }
 }

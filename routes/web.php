@@ -19,7 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name("home");
 
+// Auth
 Route::get("login", [AuthController::class, "login"])->name("login");
+Route::get("logout", [AuthController::class, "logout"])->name("logout");
 Route::post("login", [AuthController::class, "loginProcess"])->name("loginProcess");
 
+// Master
 Route::resource("mata_uang", MataUangController::class);
